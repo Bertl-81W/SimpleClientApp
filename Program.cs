@@ -1,9 +1,24 @@
 ﻿using System;
 
-class Program
+List<string> clients = new List<string>();
+
+while (true)
 {
-    static void Main(string[] args)
+    Console.WriteLine("Enter client name to add (or type 'exit' to quit):");
+    string input = Console.ReadLine()!;
+
+    if (input.ToLower() == "exit")
     {
-        Console.WriteLine("Hello, Planet!");
+        break;
+    }
+
+    if (!string.IsNullOrWhiteSpace(input))
+    {
+        clients.Add(input);
+        Console.WriteLine($"Client '{input}' added.");
+    }
+    else
+    {
+        Console.WriteLine("Client name cannot be empty.");
     }
 }
