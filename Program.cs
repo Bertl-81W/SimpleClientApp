@@ -1,46 +1,38 @@
-﻿// TOP-LEVEL 
+﻿// Top level code
 
-Client client1 = new Client();
-client1.Name = "Sarah";
-client1.Email = "sarah@email.com";
+List<Client> clients = new List<Client>();
 
-Console.WriteLine("Client added");
-Console.WriteLine("Name: " + client1.Name);
-Console.WriteLine("Email: " + client1.Email);
+while (true)
+{
+    Console.WriteLine("Enter client name (or type 'exit' to finish):");
+    string name = Console.ReadLine();
 
-// CLASS DEFINITIONS 
+    if (name == "exit")
+    {
+        break;
+    }
 
+    Console.WriteLine("Enter client email:");
+    string email = Console.ReadLine();
+
+    Client newClient = new Client();
+    newClient.Name = name;
+    newClient.Email = email;
+
+    clients.Add(newClient);
+
+    Console.WriteLine("Client added!\n");
+}
+
+Console.WriteLine("All clients:");
+foreach (Client client in clients)
+{
+    Console.WriteLine(client.Name + " - " + client.Email);
+}
+
+// class defionitions come last
 class Client
 {
     public string Name;
     public string Email;
 }
-
-
-List<string> clients = new List<string>();
-
-while (true)
-{
-    Console.WriteLine("Enter client name (or type 'exit' to finish):");
-    string input = Console.ReadLine();
-
-    if (input == "exit")
-    {
-        break;
-    }
-        clients.Add(input);
-        Console.WriteLine($"Client added!");
-    }
-
-        Console.WriteLine("All clients:"); 
-        foreach (string client in clients)
-        {
-            Console.WriteLine(client);
-        }
-    class Client
-{
-    public string Name;
-    public string Email;
-}  
-
-
