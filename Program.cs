@@ -4,13 +4,38 @@ List<Client> clients = new List<Client>();
 
 while (true)
 {
-    Console.WriteLine("Enter client name (or type 'exit' to finish):");
-    string name = Console.ReadLine();
+    Console.WriteLine("\nChoose an option:");
+    Console.WriteLine("1, Add a client");
+    Console.WriteLine("2, List clients");
+    Console.WriteLine("3, Exit");
 
-    if (name == "exit")
+    string choice = Console.ReadLine();
+
+    if (choice == "1")
     {
+        AddClient(clients);        
+    }
+
+    else if (choice == "2")
+    {
+        ListClients(clients);
+    }
+
+    else if (choice == "3")
+    {
+        Console.WriteLine("Later Gator!");
         break;
     }
+    else
+    {
+        Console.WriteLine("Invalid option. Please choose between 1, 2, or 3.");
+    }
+    
+}
+void AddClient(List<Client> clients)
+{
+    Console.WriteLine("Enter client name:");
+    string name = Console.ReadLine();
 
     Console.WriteLine("Enter client email:");
     string email = Console.ReadLine();
@@ -21,17 +46,28 @@ while (true)
 
     clients.Add(newClient);
 
-    Console.WriteLine("Client added!\n");
+    Console.WriteLine("Client added!");
 }
 
-Console.WriteLine("All clients:");
-foreach (Client client in clients)
+void ListClients(List<Client> clients)
 {
-    Console.WriteLine(client.Name + " - " + client.Email);
+    Console.WriteLine("\nClients:");
+
+    if (clients.Count == 0)
+    {
+        Console.WriteLine("No clients yet.");
+        return;
+    }
+
+    foreach (Client client in clients)
+    {
+        Console.WriteLine(client.Name + " - " + client.Email);
+    }
 }
 
-// class defionitions come last
-class Client
+//  classes
+
+  class Client
 {
     public string Name;
     public string Email;
