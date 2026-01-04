@@ -115,10 +115,8 @@ List<Joe> joes = new List<Joe>();
     Console.WriteLine("Enter joes specialty:");
     string specialty = Console.ReadLine();
 
-    Joe newJoe = new Joe();
-    newJoe.Name = name;
-    newJoe.Specialty = specialty;
-
+    Joe newJoe = new Joe(name, specialty);
+    
     joes.Add(newJoe);
 
     Console.WriteLine("Joe added!");
@@ -144,6 +142,12 @@ void ListJoes(List<Joe> joes)
 
   class Joe
 {
-    public string Name;
-    public string Specialty;
+    public string Name { get; }
+    public string Specialty { get; }
+    
+    public Joe(string name, string specialty)
+    {
+        Name = name;
+        Specialty = specialty;
+    }
 }
