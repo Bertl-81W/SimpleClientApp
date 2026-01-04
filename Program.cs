@@ -1,33 +1,33 @@
 ﻿// Top level code
 
-List<Client> clients = new List<Client>();
+ /*List<Client> clients = new List<Client>();                        
 
-while (true)
-{
-    Console.WriteLine("\nChoose an option:");
-    Console.WriteLine("1, Add a client");
-    Console.WriteLine("2, List clients");
-    Console.WriteLine("3, Exit");
+while (true)                                                      
+{                                                                 
+    Console.WriteLine("\nChoose an option:");                           
+    Console.WriteLine("1, Add a client");                             
+    Console.WriteLine("2, List clients");                             
+    Console.WriteLine("3, Exit");                                     
 
-    string choice = Console.ReadLine();
+    string choice = Console.ReadLine();                                 
 
-    if (choice == "1")
-    {
-        AddClient(clients);        
-    }
+    if (choice == "1")                                                  
+    {                                                                   
+        AddClient(clients);                                                      
+    }                                                                 
 
-    else if (choice == "2")
-    {
-        ListClients(clients);
-    }
+    else if (choice == "2")                                           
+    {                                                                 
+        ListClients(clients);                                             
+    }                                                                 
 
-    else if (choice == "3")
-    {
-        Console.WriteLine("Later Gator!");
-        break;
-    }
-    else
-    {
+    else if (choice == "3")                                           
+    {                                                                
+        Console.WriteLine("Later Gator!");                             
+        break;                                                         
+    }                                                                 
+    else                                                            
+    {                                                                  
         Console.WriteLine("Invalid option. Please choose between 1, 2, or 3.");
     }
     
@@ -71,4 +71,79 @@ void ListClients(List<Client> clients)
 {
     public string Name;
     public string Email;
+} */
+
+using System;
+using System.Collections.Generic;
+
+
+List<Joe> joes = new List<Joe>();
+ while (true)
+ {
+     Console.WriteLine("\nChoose an option:");
+     Console.WriteLine("1, Add a joe");
+     Console.WriteLine("2, List joes");
+     Console.WriteLine("3, Exit");
+
+     string choice = Console.ReadLine();
+
+     if (choice == "1")
+     {
+         AddJoe(joes);
+     }
+
+     else if (choice == "2")
+     {
+         ListJoes(joes);
+     }
+
+     else if (choice == "3")
+     {
+         Console.WriteLine("Yo Joe!");
+         break;
+     }
+     else
+     {
+         Console.WriteLine("Invalid option. Please choose between 1, 2, or 3.");
+     }
+ }
+ void AddJoe(List<Joe> joes)
+{
+    Console.WriteLine("Enter Joe name:");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("Enter joes specialty:");
+    string specialty = Console.ReadLine();
+
+    Joe newJoe = new Joe();
+    newJoe.Name = name;
+    newJoe.Specialty = specialty;
+
+    joes.Add(newJoe);
+
+    Console.WriteLine("Joe added!");
+}
+
+void ListJoes(List<Joe> joes)
+{
+    Console.WriteLine("\nJoes:");
+
+    if (joes.Count == 0)
+    {
+        Console.WriteLine("No joes yet.");
+        return;
+    }
+
+    foreach (Joe joe in joes)
+    {
+        Console.WriteLine(joe.Name + " - " + joe.Specialty);
+    }
+}
+
+//  classes
+
+  class Joe
+{
+    public string Name;
+    public string Specialty;
 }
