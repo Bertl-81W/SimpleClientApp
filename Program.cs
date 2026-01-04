@@ -72,7 +72,7 @@ void ListClients(List<Client> clients)
     public string Name;
     public string Email;
 } */
-
+using System.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -84,7 +84,10 @@ List<Joe> joes = new List<Joe>();
      Console.WriteLine("1, Add a joe");
      Console.WriteLine("2, List joes");
      Console.WriteLine("3, Exit");
-
+     Console.WriteLine("4, Count Joes");
+     Console.WriteLine("5, List Joe by specialty");
+     Console.WriteLine("List Joes aplhabetically");
+     
      string choice = Console.ReadLine();
 
      if (choice == "1")
@@ -102,6 +105,18 @@ List<Joe> joes = new List<Joe>();
          Console.WriteLine("Yo Joe!");
          break;
      }
+     else if (choice == "4")
+     {
+        CountJoes(joes);
+     }
+     else if (choice == "5")
+    {
+        ListJoesBySpecialty(joes);
+    }
+    else if (choice == "6")
+    {
+        ListJoesAlphabetically(joes);
+    }
      else
      {
          Console.WriteLine("Invalid option. Please choose between 1, 2, or 3.");
@@ -136,6 +151,41 @@ void ListJoes(List<Joe> joes)
     {
         Console.WriteLine(joe.Name + " - " + joe.Specialty);
     }
+}    
+void CountJoes(List<Joe> joes)
+{    int count = joes.Count();
+     Console.WriteLine($"Total number of Joes: {count}");
+}
+void ListJoesBySpecialty(List<Joe> joes)
+{
+    Console.WriteLine("Enter specialty:");
+    string specialty = Console.ReadLine();
+
+    var filteredJoes = joes.Where(j => j.Specialty.Equals(specialty, StringComparison.OrdinalIgnoreCase))
+                           .ToList();
+
+    if (filteredJoes.Count == 0)
+    {
+        Console.WriteLine($"No Joes found with that specialty");
+        return;
+    }
+
+    foreach (Joe joe in filteredJoes)
+    {
+        Console.WriteLine(joe.Name + " - " + joe.Specialty);
+    }
+}    
+void ListJoesAlphabetically(List<Joe> joes)
+{
+    var sortedJoes = joes.OrderBy(j => j.Name)
+                         .ToList();
+
+    Console.WriteLine("\nJoes in Alphabetical Order:");
+
+    foreach (Joe joe in sortedJoes)
+    {
+        Console.WriteLine(joe.Name + " - " + joe.Specialty);
+    }    
 }
 
 //  classes
